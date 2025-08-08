@@ -472,7 +472,11 @@ Public Class VentasForm
     End Sub
 
     Private Sub BtnHistorial_Click(sender As Object, e As EventArgs) Handles BtnHistorial.Click
-        FrmHistorialVentas.Show()
+        'FrmHistorialVentas.Show()
+        Dim frmHist As New FrmHistorialVentas()
+        'frmHist.MdiParent = Me
+        'frm.WindowState = FormWindowState.Maximized    ' Opcional: maximiza el hijo
+        frmHist.Show()
     End Sub
 
     ''' <summary>

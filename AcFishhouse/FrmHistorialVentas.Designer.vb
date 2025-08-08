@@ -35,6 +35,8 @@ Partial Class FrmHistorialVentas
         Me.TxtBuscarTicket = New System.Windows.Forms.TextBox()
         Me.lblFiltro = New System.Windows.Forms.Label()
         Me.GbDetalleTicket = New System.Windows.Forms.GroupBox()
+        Me.TxtNumW = New System.Windows.Forms.TextBox()
+        Me.LblTel = New System.Windows.Forms.Label()
         Me.BtnImprimir = New System.Windows.Forms.Button()
         Me.TxtTotal = New System.Windows.Forms.TextBox()
         Me.LblCambio = New System.Windows.Forms.Label()
@@ -44,8 +46,7 @@ Partial Class FrmHistorialVentas
         Me.lblFechaHora = New System.Windows.Forms.Label()
         Me.LblCliente = New System.Windows.Forms.Label()
         Me.lblfolioDetalle = New System.Windows.Forms.Label()
-        Me.LblTel = New System.Windows.Forms.Label()
-        Me.TxtNumW = New System.Windows.Forms.TextBox()
+        Me.BtnEnviarWs = New System.Windows.Forms.Button()
         CType(Me.ScHistorial, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ScHistorial.Panel1.SuspendLayout()
         Me.ScHistorial.Panel2.SuspendLayout()
@@ -157,6 +158,7 @@ Partial Class FrmHistorialVentas
         '
         'GbDetalleTicket
         '
+        Me.GbDetalleTicket.Controls.Add(Me.BtnEnviarWs)
         Me.GbDetalleTicket.Controls.Add(Me.TxtNumW)
         Me.GbDetalleTicket.Controls.Add(Me.LblTel)
         Me.GbDetalleTicket.Controls.Add(Me.BtnImprimir)
@@ -177,9 +179,30 @@ Partial Class FrmHistorialVentas
         Me.GbDetalleTicket.TabStop = False
         Me.GbDetalleTicket.Text = "Ticket {numero}"
         '
+        'TxtNumW
+        '
+        Me.TxtNumW.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtNumW.ForeColor = System.Drawing.SystemColors.MenuHighlight
+        Me.TxtNumW.Location = New System.Drawing.Point(347, 39)
+        Me.TxtNumW.Name = "TxtNumW"
+        Me.TxtNumW.Size = New System.Drawing.Size(101, 21)
+        Me.TxtNumW.TabIndex = 11
+        Me.TxtNumW.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'LblTel
+        '
+        Me.LblTel.AutoSize = True
+        Me.LblTel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTel.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.LblTel.Location = New System.Drawing.Point(361, 18)
+        Me.LblTel.Name = "LblTel"
+        Me.LblTel.Size = New System.Drawing.Size(67, 15)
+        Me.LblTel.TabIndex = 10
+        Me.LblTel.Text = "Telefono:"
+        '
         'BtnImprimir
         '
-        Me.BtnImprimir.Location = New System.Drawing.Point(200, 306)
+        Me.BtnImprimir.Location = New System.Drawing.Point(320, 303)
         Me.BtnImprimir.Name = "BtnImprimir"
         Me.BtnImprimir.Size = New System.Drawing.Size(145, 39)
         Me.BtnImprimir.TabIndex = 9
@@ -188,10 +211,13 @@ Partial Class FrmHistorialVentas
         '
         'TxtTotal
         '
+        Me.TxtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTotal.ForeColor = System.Drawing.Color.DarkGreen
         Me.TxtTotal.Location = New System.Drawing.Point(98, 329)
         Me.TxtTotal.Name = "TxtTotal"
-        Me.TxtTotal.Size = New System.Drawing.Size(80, 22)
+        Me.TxtTotal.Size = New System.Drawing.Size(80, 21)
         Me.TxtTotal.TabIndex = 8
+        Me.TxtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'LblCambio
         '
@@ -206,10 +232,13 @@ Partial Class FrmHistorialVentas
         '
         'TxtPagoConDetalle
         '
+        Me.TxtPagoConDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtPagoConDetalle.Location = New System.Drawing.Point(98, 301)
         Me.TxtPagoConDetalle.Name = "TxtPagoConDetalle"
-        Me.TxtPagoConDetalle.Size = New System.Drawing.Size(80, 22)
+        Me.TxtPagoConDetalle.Size = New System.Drawing.Size(80, 18)
         Me.TxtPagoConDetalle.TabIndex = 6
+        Me.TxtPagoConDetalle.Text = "N/A"
+        Me.TxtPagoConDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'LblPagoCon
         '
@@ -290,26 +319,15 @@ Partial Class FrmHistorialVentas
         Me.lblfolioDetalle.TabIndex = 1
         Me.lblfolioDetalle.Text = "Folio: 00000"
         '
-        'LblTel
+        'BtnEnviarWs
         '
-        Me.LblTel.AutoSize = True
-        Me.LblTel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTel.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.LblTel.Location = New System.Drawing.Point(380, 304)
-        Me.LblTel.Name = "LblTel"
-        Me.LblTel.Size = New System.Drawing.Size(67, 15)
-        Me.LblTel.TabIndex = 10
-        Me.LblTel.Text = "Telefono:"
-        '
-        'TxtNumW
-        '
-        Me.TxtNumW.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtNumW.ForeColor = System.Drawing.SystemColors.MenuHighlight
-        Me.TxtNumW.Location = New System.Drawing.Point(364, 324)
-        Me.TxtNumW.Name = "TxtNumW"
-        Me.TxtNumW.Size = New System.Drawing.Size(101, 21)
-        Me.TxtNumW.TabIndex = 11
-        Me.TxtNumW.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.BtnEnviarWs.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnEnviarWs.Location = New System.Drawing.Point(250, 25)
+        Me.BtnEnviarWs.Name = "BtnEnviarWs"
+        Me.BtnEnviarWs.Size = New System.Drawing.Size(91, 35)
+        Me.BtnEnviarWs.TabIndex = 12
+        Me.BtnEnviarWs.Text = "Enviar a Whts"
+        Me.BtnEnviarWs.UseVisualStyleBackColor = True
         '
         'FrmHistorialVentas
         '
@@ -357,4 +375,5 @@ Partial Class FrmHistorialVentas
     Friend WithEvents BtnImprimir As Button
     Friend WithEvents TxtNumW As TextBox
     Friend WithEvents LblTel As Label
+    Friend WithEvents BtnEnviarWs As Button
 End Class
