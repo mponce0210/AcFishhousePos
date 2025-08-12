@@ -62,4 +62,14 @@ Public Class mainForm
 
 
     End Sub
+
+    Private Sub TICKETToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TICKETToolStripMenuItem.Click
+
+        Dim frm As New FrmHistorialVentas()
+        frm.MdiParent = Me
+        'frm.WindowState = FormWindowState.Maximized    ' Opcional: maximiza el hijo
+        frm.Show()
+
+
+    End Sub
 End Class

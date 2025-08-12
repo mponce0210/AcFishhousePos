@@ -41,8 +41,24 @@ Public Class FrmHistorialVentas
 
     Private Sub dgvTickets_SelectionChanged(sender As Object, e As EventArgs) _
     Handles DgvTickets.SelectionChanged
-        If DgvTickets.CurrentRow Is Nothing Then Exit Sub
-        Dim ventaID = CInt(DgvTickets.CurrentRow.Cells("Ticket").Value)
+        ' If DgvTickets.CurrentRow Is Nothing Then Exit Sub
+
+        ' 1) Si el grid está vacío o no hay fila actual, no hagas nada
+        If DgvTickets Is Nothing OrElse DgvTickets.Rows.Count = 0 Then Exit Sub
+        If DgvTickets.CurrentRow Is Nothing OrElse DgvTickets.CurrentRow.IsNewRow Then Exit Sub
+
+        'Dim ventaID = CInt(DgvTickets.CurrentRow.Cells("Ticket").Value)
+        Dim obj = DgvTickets.CurrentRow.Cells("Ticket").Value
+        Dim ventaID As Integer
+        If obj Is Nothing OrElse obj Is DBNull.Value _
+       OrElse Not Integer.TryParse(obj.ToString(), ventaID) Then
+            ' (Opcional) limpia detalle si quieres
+            'LimpiarDetalle()
+            'DgvTickets.AllowUserToAddRows = False
+            Exit Sub
+        End If
+
+
         CargarDetalle(ventaID)
     End Sub
 
@@ -405,7 +421,12 @@ Public Class FrmHistorialVentas
     End Sub
 
     Private Sub BtnEnviarWs_Click(sender As Object, e As EventArgs) Handles BtnEnviarWs.Click
-        Call EnviarPorWhatsApp(TxtNumW.Text)
+        'Call EnviarPorWhatsApp(TxtNumW.Text)
+        Dim f As New FrmWhatsapp
+        ' f.MdiParent = Me              ' <- esta línea lo hace hijo del MDI
+        'f.StartPosition = FormStartPosition.CenterParent  ' o Manual
+        'f.WindowState = FormWindowState.Maximized         ' opcional: que llene el área
+        f.Show()
     End Sub
 
     Private Function GenerarTicketPDF_EstiloTienda() As String
@@ -564,9 +585,17 @@ Public Class FrmHistorialVentas
             Dim aWa As New Anchor("WhatsApp: 81 2647 5360", fNorm) With {.Reference = "https://wa.me/528126475360"}
             doc.Add(aWa)
             doc.Add(Chunk.Newline)
+
+            Dim GAcuario As New Anchor("Garantia Politica a Acuarios", fNorm) With {.Reference = "https://tinyurl.com/Garantia-Pecera"}
+            doc.Add(GAcuario)
             doc.Add(Chunk.Newline)
 
-            Dim gracias As New Paragraph("**** Gracias por su Compra ****", fBold)
+            Dim GFiltrosCas As New Anchor("Garantia Politica Filtros y Cascadas", fNorm) With {.Reference = "https://tinyurl.com/Garantia-Filtros-Cascadas"}
+            doc.Add(GFiltrosCas)
+            doc.Add(Chunk.Newline)
+            doc.Add(Chunk.Newline)
+
+            Dim gracias As New Paragraph("**** Gracias por su compra. Síganos en redes para promociones ****", fBold)
             gracias.Alignment = Element.ALIGN_CENTER
             doc.Add(gracias)
 

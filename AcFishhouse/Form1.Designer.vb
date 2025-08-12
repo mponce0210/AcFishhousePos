@@ -98,7 +98,7 @@ Partial Class mainForm
         'TICKETToolStripMenuItem
         '
         Me.TICKETToolStripMenuItem.Name = "TICKETToolStripMenuItem"
-        Me.TICKETToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
+        Me.TICKETToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TICKETToolStripMenuItem.Text = "TICKET"
         '
         'ToolStrip1

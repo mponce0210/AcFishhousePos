@@ -707,7 +707,5 @@ Public Class Biotropic
         End Using
     End Sub
 
-    Private Sub CmbMarca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbMarca.SelectedIndexChanged
 
-    End Sub
 End Class

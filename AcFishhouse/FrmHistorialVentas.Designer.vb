@@ -22,9 +22,9 @@ Partial Class FrmHistorialVentas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.LblHist = New System.Windows.Forms.Label()
         Me.ScHistorial = New System.Windows.Forms.SplitContainer()
         Me.pnlFiltroFEcha = New System.Windows.Forms.Panel()
@@ -35,6 +35,7 @@ Partial Class FrmHistorialVentas
         Me.TxtBuscarTicket = New System.Windows.Forms.TextBox()
         Me.lblFiltro = New System.Windows.Forms.Label()
         Me.GbDetalleTicket = New System.Windows.Forms.GroupBox()
+        Me.BtnEnviarWs = New System.Windows.Forms.Button()
         Me.TxtNumW = New System.Windows.Forms.TextBox()
         Me.LblTel = New System.Windows.Forms.Label()
         Me.BtnImprimir = New System.Windows.Forms.Button()
@@ -46,7 +47,7 @@ Partial Class FrmHistorialVentas
         Me.lblFechaHora = New System.Windows.Forms.Label()
         Me.LblCliente = New System.Windows.Forms.Label()
         Me.lblfolioDetalle = New System.Windows.Forms.Label()
-        Me.BtnEnviarWs = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.ScHistorial, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ScHistorial.Panel1.SuspendLayout()
         Me.ScHistorial.Panel2.SuspendLayout()
@@ -55,6 +56,7 @@ Partial Class FrmHistorialVentas
         CType(Me.DgvTickets, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbDetalleTicket.SuspendLayout()
         CType(Me.DgvDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LblHist
@@ -158,6 +160,7 @@ Partial Class FrmHistorialVentas
         '
         'GbDetalleTicket
         '
+        Me.GbDetalleTicket.Controls.Add(Me.PictureBox1)
         Me.GbDetalleTicket.Controls.Add(Me.BtnEnviarWs)
         Me.GbDetalleTicket.Controls.Add(Me.TxtNumW)
         Me.GbDetalleTicket.Controls.Add(Me.LblTel)
@@ -179,26 +182,38 @@ Partial Class FrmHistorialVentas
         Me.GbDetalleTicket.TabStop = False
         Me.GbDetalleTicket.Text = "Ticket {numero}"
         '
+        'BtnEnviarWs
+        '
+        Me.BtnEnviarWs.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnEnviarWs.Location = New System.Drawing.Point(364, 25)
+        Me.BtnEnviarWs.Name = "BtnEnviarWs"
+        Me.BtnEnviarWs.Size = New System.Drawing.Size(91, 35)
+        Me.BtnEnviarWs.TabIndex = 12
+        Me.BtnEnviarWs.Text = "Enviar a Whts"
+        Me.BtnEnviarWs.UseVisualStyleBackColor = True
+        '
         'TxtNumW
         '
         Me.TxtNumW.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtNumW.ForeColor = System.Drawing.SystemColors.MenuHighlight
-        Me.TxtNumW.Location = New System.Drawing.Point(347, 39)
+        Me.TxtNumW.Location = New System.Drawing.Point(250, 66)
         Me.TxtNumW.Name = "TxtNumW"
         Me.TxtNumW.Size = New System.Drawing.Size(101, 21)
         Me.TxtNumW.TabIndex = 11
         Me.TxtNumW.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TxtNumW.Visible = False
         '
         'LblTel
         '
         Me.LblTel.AutoSize = True
         Me.LblTel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTel.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.LblTel.Location = New System.Drawing.Point(361, 18)
+        Me.LblTel.Location = New System.Drawing.Point(257, 6)
         Me.LblTel.Name = "LblTel"
         Me.LblTel.Size = New System.Drawing.Size(67, 15)
         Me.LblTel.TabIndex = 10
         Me.LblTel.Text = "Telefono:"
+        Me.LblTel.Visible = False
         '
         'BtnImprimir
         '
@@ -254,34 +269,34 @@ Partial Class FrmHistorialVentas
         'DgvDetalle
         '
         Me.DgvDetalle.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvDetalle.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvDetalle.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvDetalle.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvDetalle.DefaultCellStyle = DataGridViewCellStyle2
         Me.DgvDetalle.Location = New System.Drawing.Point(6, 89)
         Me.DgvDetalle.Name = "DgvDetalle"
         Me.DgvDetalle.ReadOnly = True
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvDetalle.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvDetalle.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DgvDetalle.Size = New System.Drawing.Size(459, 200)
         Me.DgvDetalle.TabIndex = 4
@@ -319,15 +334,17 @@ Partial Class FrmHistorialVentas
         Me.lblfolioDetalle.TabIndex = 1
         Me.lblfolioDetalle.Text = "Folio: 00000"
         '
-        'BtnEnviarWs
+        'PictureBox1
         '
-        Me.BtnEnviarWs.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEnviarWs.Location = New System.Drawing.Point(250, 25)
-        Me.BtnEnviarWs.Name = "BtnEnviarWs"
-        Me.BtnEnviarWs.Size = New System.Drawing.Size(91, 35)
-        Me.BtnEnviarWs.TabIndex = 12
-        Me.BtnEnviarWs.Text = "Enviar a Whts"
-        Me.BtnEnviarWs.UseVisualStyleBackColor = True
+        Me.PictureBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.Image = Global.AcFishhouse.My.Resources.Resources.whatsapp
+        Me.PictureBox1.Location = New System.Drawing.Point(333, 32)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(18, 17)
+        Me.PictureBox1.TabIndex = 13
+        Me.PictureBox1.TabStop = False
         '
         'FrmHistorialVentas
         '
@@ -350,6 +367,7 @@ Partial Class FrmHistorialVentas
         Me.GbDetalleTicket.ResumeLayout(False)
         Me.GbDetalleTicket.PerformLayout()
         CType(Me.DgvDetalle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -376,4 +394,5 @@ Partial Class FrmHistorialVentas
     Friend WithEvents TxtNumW As TextBox
     Friend WithEvents LblTel As Label
     Friend WithEvents BtnEnviarWs As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

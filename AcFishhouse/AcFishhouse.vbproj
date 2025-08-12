@@ -132,6 +132,12 @@
     <Compile Include="FrmHistorialVentas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmWhatsapp.Designer.vb">
+      <DependentUpon>FrmWhatsapp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWhatsapp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHistorialVentas.resx">
       <DependentUpon>FrmHistorialVentas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWhatsapp.resx">
+      <DependentUpon>FrmWhatsapp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas.resx">
       <DependentUpon>Ventas.vb</DependentUpon>
@@ -292,6 +301,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\removebg2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\whatsapp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />

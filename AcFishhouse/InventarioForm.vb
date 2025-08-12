@@ -88,11 +88,47 @@ Public Class InventarioForm
 
         ' 1) Rellenar un DataSet local
         Dim dsLocal As New DataSet()
+        Dim dt As New DataTable
+
         Using cn As New SqlConnection(connStr),
-          da As New SqlDataAdapter("dbo.sp_Productos_Listar", cn)
+              da As New SqlDataAdapter("dbo.sp_Productos_Listar", cn)
 
             da.SelectCommand.CommandType = CommandType.StoredProcedure
+            ' Buscar(TextBox)
+            Dim q = txtbuscar.Text.Trim()
+            da.SelectCommand.Parameters.Add("@Buscar", SqlDbType.NVarChar, 100).Value =
+            If(String.IsNullOrWhiteSpace(q), CType(DBNull.Value, Object), q)
+
+            ' Categoría
+            da.SelectCommand.Parameters.Add("@CategoriaId", SqlDbType.Int).Value =
+            If(CboCategoria.SelectedIndex > 0, CInt(CboCategoria.SelectedValue), CType(DBNull.Value, Object))
+
+            ' Marca
+            da.SelectCommand.Parameters.Add("@MarcaId", SqlDbType.Int).Value =
+            If(CboMarca.SelectedIndex > 0, CInt(CboMarca.SelectedValue), CType(DBNull.Value, Object))
+
+            ' Proveedor
+            da.SelectCommand.Parameters.Add("@ProveedorId", SqlDbType.Int).Value =
+            If(cboProveedor.SelectedIndex > 0, CInt(cboProveedor.SelectedValue), CType(DBNull.Value, Object))
+
+            ' (Opcional) Solo activos (CheckBox)
+            da.SelectCommand.Parameters.Add("@SoloActivos", SqlDbType.Bit).Value =
+            If(ChkActivo.Checked, 1, CType(DBNull.Value, Object))
+
+            ' (Opcional) Página/tamaño
+            da.SelectCommand.Parameters.Add("@Page", SqlDbType.Int).Value = 1
+            da.SelectCommand.Parameters.Add("@PageSize", SqlDbType.Int).Value = 500
+
+            ' Param para tu fn_CalculaPrecioArticulo
+            da.SelectCommand.Parameters.Add("@PrecioParam", SqlDbType.Int).Value = 1
+
+            dt.Clear()
+            da.Fill(dt)
+
+
+
             da.Fill(dsLocal, "Inventario")
+
         End Using
 
         dtInv = dsLocal.Tables("Inventario")
@@ -166,6 +202,8 @@ Public Class InventarioForm
                 "CODIGOBAR LIKE '%{0}%' OR PRODUCTO LIKE '%{0}%'",
                 texto)
         End If
+        CargarInventario()
+
     End Sub
 
     Private Sub CargarProveedores()
@@ -518,7 +556,31 @@ Public Class InventarioForm
 
     End Sub
 
+    Private Sub ToolStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles ToolStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+
+        txtbuscar.Clear()
+        CboCategoria.SelectedIndex = -1
+        CboMarca.SelectedIndex = -1
+        cboProveedor.SelectedIndex = -1
+        'chkSoloActivos.Checked = False
+        CargarInventario()
 
 
+    End Sub
 
+    Private Sub CboMarca_KeyDown(sender As Object, e As KeyEventArgs) Handles CboMarca.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            Dim criterio = CboMarca.Text.Replace("'", "''").Trim()
+            If criterio = "" Then
+                bs.RemoveFilter()
+            Else
+                bs.Filter = $"BioMarca = '{criterio}'"
+            End If
+        End If
+    End Sub
 End Class
