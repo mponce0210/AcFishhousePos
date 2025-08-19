@@ -101,6 +101,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AperturaCajaContext.vb" />
     <Compile Include="Biotropic.Designer.vb">
       <DependentUpon>Biotropic.vb</DependentUpon>
     </Compile>
@@ -120,16 +121,40 @@
     <Compile Include="Form2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmAperturaCaja.Designer.vb">
+      <DependentUpon>FrmAperturaCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAperturaCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmBusquedaProductos.Designer.vb">
       <DependentUpon>FrmBusquedaProductos.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmBusquedaProductos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmDineroenCaja.Designer.vb">
+      <DependentUpon>FrmDineroenCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDineroenCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmHistorialVentas.Designer.vb">
       <DependentUpon>FrmHistorialVentas.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmHistorialVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPagoTerminal.Designer.vb">
+      <DependentUpon>FrmPagoTerminal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPagoTerminal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVerificadorPrecio.Designer.vb">
+      <DependentUpon>FrmVerificadorPrecio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVerificadorPrecio.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmWhatsapp.Designer.vb">
@@ -178,11 +203,23 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAperturaCaja.resx">
+      <DependentUpon>FrmAperturaCaja.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBusquedaProductos.resx">
       <DependentUpon>FrmBusquedaProductos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDineroenCaja.resx">
+      <DependentUpon>FrmDineroenCaja.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmHistorialVentas.resx">
       <DependentUpon>FrmHistorialVentas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPagoTerminal.resx">
+      <DependentUpon>FrmPagoTerminal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVerificadorPrecio.resx">
+      <DependentUpon>FrmVerificadorPrecio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWhatsapp.resx">
       <DependentUpon>FrmWhatsapp.vb</DependentUpon>

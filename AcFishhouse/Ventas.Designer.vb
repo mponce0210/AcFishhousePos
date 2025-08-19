@@ -23,11 +23,22 @@ Partial Class VentasForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.tsbF3Producto = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TlSBtnVerifica = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.Lblticket = New System.Windows.Forms.Label()
         Me.LblCodigo = New System.Windows.Forms.Label()
         Me.BtnEnter = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.IdProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CdBarras = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DesProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PreVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteVen = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Existencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LblCantPro = New System.Windows.Forms.Label()
         Me.LblCantidad = New System.Windows.Forms.Label()
         Me.LblTotal = New System.Windows.Forms.Label()
@@ -44,26 +55,18 @@ Partial Class VentasForm
         Me.NuDEfe = New System.Windows.Forms.NumericUpDown()
         Me.LblMixTc = New System.Windows.Forms.Label()
         Me.lblMixEfe = New System.Windows.Forms.Label()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.RBTransfer = New System.Windows.Forms.RadioButton()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.RBMixto = New System.Windows.Forms.RadioButton()
         Me.RBDebito = New System.Windows.Forms.RadioButton()
-        Me.RBCredito = New System.Windows.Forms.RadioButton()
-        Me.RbEfectivo = New System.Windows.Forms.RadioButton()
-        Me.cboProducto = New System.Windows.Forms.ComboBox()
-        Me.IdProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CdBarras = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DesProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PreVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteVen = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Existencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.tsbF3Producto = New System.Windows.Forms.ToolStripButton()
+        Me.RBCredito = New System.Windows.Forms.RadioButton()
+        Me.RbEfectivo = New System.Windows.Forms.RadioButton()
+        Me.cboProducto = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -80,17 +83,54 @@ Partial Class VentasForm
         '
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbF3Producto, Me.ToolStripSeparator1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbF3Producto, Me.ToolStripSeparator1, Me.TlSBtnVerifica, Me.ToolStripLabel1, Me.ToolStripLabel2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(968, 49)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
         '
+        'tsbF3Producto
+        '
+        Me.tsbF3Producto.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.tsbF3Producto.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tsbF3Producto.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.tsbF3Producto.Image = Global.AcFishhouse.My.Resources.Resources.buscar__1_1
+        Me.tsbF3Producto.Name = "tsbF3Producto"
+        Me.tsbF3Producto.Size = New System.Drawing.Size(102, 46)
+        Me.tsbF3Producto.Text = "F3 Producto"
+        '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 49)
+        '
+        'TlSBtnVerifica
+        '
+        Me.TlSBtnVerifica.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TlSBtnVerifica.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TlSBtnVerifica.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.TlSBtnVerifica.Image = Global.AcFishhouse.My.Resources.Resources.editar
+        Me.TlSBtnVerifica.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.TlSBtnVerifica.Name = "TlSBtnVerifica"
+        Me.TlSBtnVerifica.Size = New System.Drawing.Size(148, 46)
+        Me.TlSBtnVerifica.Text = "F4 Verificador $"
+        '
+        'ToolStripLabel1
+        '
+        Me.ToolStripLabel1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripLabel1.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.ToolStripLabel1.Name = "ToolStripLabel1"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(186, 46)
+        Me.ToolStripLabel1.Text = "Atajos : Cantidad Enter (Calcular) /"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripLabel2.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(206, 46)
+        Me.ToolStripLabel2.Text = "/ Borrar Renglon Click #-Reng (Delete)"
         '
         'Lblticket
         '
@@ -137,6 +177,48 @@ Partial Class VentasForm
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(689, 244)
         Me.DataGridView1.TabIndex = 5
+        '
+        'IdProducto
+        '
+        Me.IdProducto.HeaderText = "IdProducto"
+        Me.IdProducto.Name = "IdProducto"
+        Me.IdProducto.ReadOnly = True
+        '
+        'CdBarras
+        '
+        Me.CdBarras.FillWeight = 150.0!
+        Me.CdBarras.HeaderText = "Codigo Barras"
+        Me.CdBarras.Name = "CdBarras"
+        Me.CdBarras.ReadOnly = True
+        '
+        'DesProducto
+        '
+        Me.DesProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.DesProducto.HeaderText = "Descripcion Ptco"
+        Me.DesProducto.Name = "DesProducto"
+        Me.DesProducto.ReadOnly = True
+        Me.DesProducto.Width = 104
+        '
+        'PreVenta
+        '
+        Me.PreVenta.HeaderText = "Precio Venta"
+        Me.PreVenta.Name = "PreVenta"
+        '
+        'Cantidad
+        '
+        Me.Cantidad.HeaderText = "Cant."
+        Me.Cantidad.Name = "Cantidad"
+        '
+        'ImporteVen
+        '
+        Me.ImporteVen.HeaderText = "Importe"
+        Me.ImporteVen.Name = "ImporteVen"
+        '
+        'Existencia
+        '
+        Me.Existencia.HeaderText = "Existencia"
+        Me.Existencia.Name = "Existencia"
+        Me.Existencia.ReadOnly = True
         '
         'LblCantPro
         '
@@ -200,8 +282,9 @@ Partial Class VentasForm
         Me.LblDTotal.ForeColor = System.Drawing.Color.DarkGreen
         Me.LblDTotal.Location = New System.Drawing.Point(697, 220)
         Me.LblDTotal.Name = "LblDTotal"
-        Me.LblDTotal.Size = New System.Drawing.Size(226, 85)
+        Me.LblDTotal.Size = New System.Drawing.Size(259, 85)
         Me.LblDTotal.TabIndex = 11
+        Me.LblDTotal.Text = "0.00"
         Me.LblDTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'LblDCambio
@@ -247,6 +330,7 @@ Partial Class VentasForm
         Me.TxtPago.Name = "TxtPago"
         Me.TxtPago.Size = New System.Drawing.Size(82, 22)
         Me.TxtPago.TabIndex = 17
+        Me.TxtPago.Text = "0.00"
         Me.TxtPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'GroupBox1
@@ -332,6 +416,16 @@ Partial Class VentasForm
         Me.lblMixEfe.Text = "MixEfec"
         Me.lblMixEfe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'PictureBox5
+        '
+        Me.PictureBox5.Image = Global.AcFishhouse.My.Resources.Resources.simbolos
+        Me.PictureBox5.Location = New System.Drawing.Point(395, 83)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(68, 43)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox5.TabIndex = 29
+        Me.PictureBox5.TabStop = False
+        '
         'RBTransfer
         '
         Me.RBTransfer.Appearance = System.Windows.Forms.Appearance.Button
@@ -350,6 +444,16 @@ Partial Class VentasForm
         Me.RBTransfer.Text = "TRANSFER"
         Me.RBTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.RBTransfer.UseVisualStyleBackColor = True
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Image = Global.AcFishhouse.My.Resources.Resources.movil
+        Me.PictureBox4.Location = New System.Drawing.Point(495, 83)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(70, 43)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox4.TabIndex = 27
+        Me.PictureBox4.TabStop = False
         '
         'RBMixto
         '
@@ -389,6 +493,36 @@ Partial Class VentasForm
         Me.RBDebito.Text = "T.DEBITO"
         Me.RBDebito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.RBDebito.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.AcFishhouse.My.Resources.Resources.tarjeta_de_debito
+        Me.PictureBox2.Location = New System.Drawing.Point(185, 85)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(66, 43)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 23
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = Global.AcFishhouse.My.Resources.Resources.visa
+        Me.PictureBox3.Location = New System.Drawing.Point(283, 83)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(67, 43)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 25
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.AcFishhouse.My.Resources.Resources.cASH
+        Me.PictureBox1.Location = New System.Drawing.Point(68, 83)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(88, 45)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 22
+        Me.PictureBox1.TabStop = False
         '
         'RBCredito
         '
@@ -441,48 +575,6 @@ Partial Class VentasForm
         Me.cboProducto.Size = New System.Drawing.Size(523, 21)
         Me.cboProducto.TabIndex = 19
         '
-        'IdProducto
-        '
-        Me.IdProducto.HeaderText = "IdProducto"
-        Me.IdProducto.Name = "IdProducto"
-        Me.IdProducto.ReadOnly = True
-        '
-        'CdBarras
-        '
-        Me.CdBarras.FillWeight = 150.0!
-        Me.CdBarras.HeaderText = "Codigo de Barras"
-        Me.CdBarras.Name = "CdBarras"
-        Me.CdBarras.ReadOnly = True
-        '
-        'DesProducto
-        '
-        Me.DesProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.DesProducto.HeaderText = "Descripcion del Producto"
-        Me.DesProducto.Name = "DesProducto"
-        Me.DesProducto.ReadOnly = True
-        Me.DesProducto.Width = 99
-        '
-        'PreVenta
-        '
-        Me.PreVenta.HeaderText = "Precio Venta"
-        Me.PreVenta.Name = "PreVenta"
-        '
-        'Cantidad
-        '
-        Me.Cantidad.HeaderText = "Cant."
-        Me.Cantidad.Name = "Cantidad"
-        '
-        'ImporteVen
-        '
-        Me.ImporteVen.HeaderText = "Importe"
-        Me.ImporteVen.Name = "ImporteVen"
-        '
-        'Existencia
-        '
-        Me.Existencia.HeaderText = "Existencia"
-        Me.Existencia.Name = "Existencia"
-        Me.Existencia.ReadOnly = True
-        '
         'Label1
         '
         Me.Label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption
@@ -494,66 +586,6 @@ Partial Class VentasForm
         Me.Label1.Size = New System.Drawing.Size(595, 23)
         Me.Label1.TabIndex = 20
         Me.Label1.Text = "Venta - Ticket "
-        '
-        'PictureBox5
-        '
-        Me.PictureBox5.Image = Global.AcFishhouse.My.Resources.Resources.simbolos
-        Me.PictureBox5.Location = New System.Drawing.Point(395, 83)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(68, 43)
-        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox5.TabIndex = 29
-        Me.PictureBox5.TabStop = False
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.Image = Global.AcFishhouse.My.Resources.Resources.movil
-        Me.PictureBox4.Location = New System.Drawing.Point(495, 83)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(70, 43)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox4.TabIndex = 27
-        Me.PictureBox4.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.AcFishhouse.My.Resources.Resources.tarjeta_de_debito
-        Me.PictureBox2.Location = New System.Drawing.Point(185, 85)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(66, 43)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 23
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Image = Global.AcFishhouse.My.Resources.Resources.visa
-        Me.PictureBox3.Location = New System.Drawing.Point(283, 83)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(67, 43)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 25
-        Me.PictureBox3.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.AcFishhouse.My.Resources.Resources.cASH
-        Me.PictureBox1.Location = New System.Drawing.Point(68, 83)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(88, 45)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 22
-        Me.PictureBox1.TabStop = False
-        '
-        'tsbF3Producto
-        '
-        Me.tsbF3Producto.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.tsbF3Producto.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tsbF3Producto.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.tsbF3Producto.Image = Global.AcFishhouse.My.Resources.Resources.buscar__1_1
-        Me.tsbF3Producto.Name = "tsbF3Producto"
-        Me.tsbF3Producto.Size = New System.Drawing.Size(102, 46)
-        Me.tsbF3Producto.Text = "F3 Producto"
         '
         'VentasForm
         '
@@ -572,6 +604,7 @@ Partial Class VentasForm
         Me.Controls.Add(Me.LblCodigo)
         Me.Controls.Add(Me.Lblticket)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.KeyPreview = True
         Me.Name = "VentasForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ventas"
@@ -626,6 +659,7 @@ Partial Class VentasForm
     Friend WithEvents lblMixEfe As Label
     Friend WithEvents NudTC As NumericUpDown
     Friend WithEvents BtnHistorial As Button
+    Friend WithEvents Label1 As Label
     Friend WithEvents IdProducto As DataGridViewTextBoxColumn
     Friend WithEvents CdBarras As DataGridViewTextBoxColumn
     Friend WithEvents DesProducto As DataGridViewTextBoxColumn
@@ -633,5 +667,7 @@ Partial Class VentasForm
     Friend WithEvents Cantidad As DataGridViewTextBoxColumn
     Friend WithEvents ImporteVen As DataGridViewTextBoxColumn
     Friend WithEvents Existencia As DataGridViewTextBoxColumn
-    Friend WithEvents Label1 As Label
+    Friend WithEvents TlSBtnVerifica As ToolStripButton
+    Friend WithEvents ToolStripLabel1 As ToolStripLabel
+    Friend WithEvents ToolStripLabel2 As ToolStripLabel
 End Class

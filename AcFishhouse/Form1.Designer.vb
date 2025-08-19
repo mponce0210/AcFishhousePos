@@ -32,17 +32,29 @@ Partial Class mainForm
         Me.VENTANASToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IMPRESIONESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TICKETToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CORTESCAJAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.APERTURACAJAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DINEROENCAJAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsbExit = New System.Windows.Forms.ToolStripButton()
         Me.tsbPrint = New System.Windows.Forms.ToolStripButton()
         Me.tsbExportExcel = New System.Windows.Forms.ToolStripButton()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tssUsuario = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssTerminal = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssObs = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssUltAct = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssAfirme = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssRiesgo = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tssCaja = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.VENTANASToolStripMenuItem, Me.IMPRESIONESToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.VENTANASToolStripMenuItem, Me.IMPRESIONESToolStripMenuItem, Me.CORTESCAJAToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.MdiWindowListItem = Me.VENTANASToolStripMenuItem
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -98,8 +110,27 @@ Partial Class mainForm
         'TICKETToolStripMenuItem
         '
         Me.TICKETToolStripMenuItem.Name = "TICKETToolStripMenuItem"
-        Me.TICKETToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TICKETToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.TICKETToolStripMenuItem.Text = "TICKET"
+        '
+        'CORTESCAJAToolStripMenuItem
+        '
+        Me.CORTESCAJAToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.APERTURACAJAToolStripMenuItem, Me.DINEROENCAJAToolStripMenuItem})
+        Me.CORTESCAJAToolStripMenuItem.Name = "CORTESCAJAToolStripMenuItem"
+        Me.CORTESCAJAToolStripMenuItem.Size = New System.Drawing.Size(92, 20)
+        Me.CORTESCAJAToolStripMenuItem.Text = "CORTES CAJA"
+        '
+        'APERTURACAJAToolStripMenuItem
+        '
+        Me.APERTURACAJAToolStripMenuItem.Name = "APERTURACAJAToolStripMenuItem"
+        Me.APERTURACAJAToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.APERTURACAJAToolStripMenuItem.Text = "APERTURA CAJA"
+        '
+        'DINEROENCAJAToolStripMenuItem
+        '
+        Me.DINEROENCAJAToolStripMenuItem.Name = "DINEROENCAJAToolStripMenuItem"
+        Me.DINEROENCAJAToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.DINEROENCAJAToolStripMenuItem.Text = "DINERO EN CAJA"
         '
         'ToolStrip1
         '
@@ -143,6 +174,59 @@ Partial Class mainForm
         Me.tsbExportExcel.Size = New System.Drawing.Size(24, 24)
         Me.tsbExportExcel.Text = "EXCEL"
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tssCaja, Me.tssUsuario, Me.tssTerminal, Me.tssObs, Me.tssUltAct, Me.tssAfirme, Me.tssRiesgo})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 446)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(972, 25)
+        Me.StatusStrip1.TabIndex = 6
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'tssUsuario
+        '
+        Me.tssUsuario.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.tssUsuario.Name = "tssUsuario"
+        Me.tssUsuario.Size = New System.Drawing.Size(119, 17)
+        Me.tssUsuario.Text = "ToolStripStatusLabel1"
+        '
+        'tssTerminal
+        '
+        Me.tssTerminal.Name = "tssTerminal"
+        Me.tssTerminal.Size = New System.Drawing.Size(119, 17)
+        Me.tssTerminal.Text = "ToolStripStatusLabel1"
+        '
+        'tssObs
+        '
+        Me.tssObs.Name = "tssObs"
+        Me.tssObs.Size = New System.Drawing.Size(119, 17)
+        Me.tssObs.Text = "ToolStripStatusLabel1"
+        '
+        'tssUltAct
+        '
+        Me.tssUltAct.Name = "tssUltAct"
+        Me.tssUltAct.Size = New System.Drawing.Size(119, 17)
+        Me.tssUltAct.Text = "ToolStripStatusLabel1"
+        '
+        'tssAfirme
+        '
+        Me.tssAfirme.Name = "tssAfirme"
+        Me.tssAfirme.Size = New System.Drawing.Size(119, 17)
+        Me.tssAfirme.Text = "ToolStripStatusLabel1"
+        '
+        'tssRiesgo
+        '
+        Me.tssRiesgo.Name = "tssRiesgo"
+        Me.tssRiesgo.Size = New System.Drawing.Size(119, 17)
+        Me.tssRiesgo.Text = "ToolStripStatusLabel1"
+        '
+        'tssCaja
+        '
+        Me.tssCaja.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tssCaja.Name = "tssCaja"
+        Me.tssCaja.Size = New System.Drawing.Size(162, 20)
+        Me.tssCaja.Text = "ToolStripStatusLabel1"
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -151,9 +235,11 @@ Partial Class mainForm
         Me.BackgroundImage = Global.AcFishhouse.My.Resources.Resources.removebg2
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(972, 471)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "mainForm"
@@ -163,6 +249,8 @@ Partial Class mainForm
         Me.MenuStrip1.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -180,4 +268,15 @@ Partial Class mainForm
     Friend WithEvents tsbPrint As ToolStripButton
     Friend WithEvents tsbExit As ToolStripButton
     Friend WithEvents VENTANASToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CORTESCAJAToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DINEROENCAJAToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents APERTURACAJAToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents tssUsuario As ToolStripStatusLabel
+    Friend WithEvents tssTerminal As ToolStripStatusLabel
+    Friend WithEvents tssObs As ToolStripStatusLabel
+    Friend WithEvents tssCaja As ToolStripStatusLabel
+    Friend WithEvents tssUltAct As ToolStripStatusLabel
+    Friend WithEvents tssAfirme As ToolStripStatusLabel
+    Friend WithEvents tssRiesgo As ToolStripStatusLabel
 End Class

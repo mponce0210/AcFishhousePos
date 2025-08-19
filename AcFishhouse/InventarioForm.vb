@@ -583,4 +583,8 @@ Public Class InventarioForm
             End If
         End If
     End Sub
+
+    Private Sub gbEdicion_Enter(sender As Object, e As EventArgs) Handles gbEdicion.Enter
+
+    End Sub
 End Class

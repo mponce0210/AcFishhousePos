@@ -23,7 +23,7 @@ Partial Class InventarioForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DtgInventario = New System.Windows.Forms.DataGridView()
         Me.btnguardar = New System.Windows.Forms.Button()
         Me.scMain = New System.Windows.Forms.SplitContainer()
@@ -108,15 +108,15 @@ Partial Class InventarioForm
         '
         Me.DtgInventario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DtgInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.NullValue = Nothing
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DtgInventario.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.NullValue = Nothing
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DtgInventario.DefaultCellStyle = DataGridViewCellStyle1
         Me.DtgInventario.Location = New System.Drawing.Point(0, 19)
         Me.DtgInventario.Name = "DtgInventario"
         Me.DtgInventario.ReadOnly = True
@@ -609,6 +609,7 @@ Partial Class InventarioForm
         '
         Me.NudExistencia.Location = New System.Drawing.Point(218, 124)
         Me.NudExistencia.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NudExistencia.Minimum = New Decimal(New Integer() {10, 0, 0, -2147483648})
         Me.NudExistencia.Name = "NudExistencia"
         Me.NudExistencia.Size = New System.Drawing.Size(95, 22)
         Me.NudExistencia.TabIndex = 8

@@ -25,14 +25,15 @@ Partial Class FrmBusquedaProductos
         Me.TxtFiltro = New System.Windows.Forms.TextBox()
         Me.dgvProductos = New System.Windows.Forms.DataGridView()
         Me.lblBuscarPro = New System.Windows.Forms.Label()
+        Me.CmbCat = New System.Windows.Forms.ComboBox()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtFiltro
         '
-        Me.TxtFiltro.Location = New System.Drawing.Point(196, 54)
+        Me.TxtFiltro.Location = New System.Drawing.Point(436, 53)
         Me.TxtFiltro.Name = "TxtFiltro"
-        Me.TxtFiltro.Size = New System.Drawing.Size(684, 20)
+        Me.TxtFiltro.Size = New System.Drawing.Size(498, 20)
         Me.TxtFiltro.TabIndex = 0
         Me.TxtFiltro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -58,11 +59,20 @@ Partial Class FrmBusquedaProductos
         Me.lblBuscarPro.TabIndex = 2
         Me.lblBuscarPro.Text = "Busqueda Rapida"
         '
+        'CmbCat
+        '
+        Me.CmbCat.FormattingEnabled = True
+        Me.CmbCat.Location = New System.Drawing.Point(46, 21)
+        Me.CmbCat.Name = "CmbCat"
+        Me.CmbCat.Size = New System.Drawing.Size(243, 21)
+        Me.CmbCat.TabIndex = 3
+        '
         'FrmBusquedaProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1093, 450)
+        Me.Controls.Add(Me.CmbCat)
         Me.Controls.Add(Me.lblBuscarPro)
         Me.Controls.Add(Me.dgvProductos)
         Me.Controls.Add(Me.TxtFiltro)
@@ -77,4 +87,5 @@ Partial Class FrmBusquedaProductos
     Friend WithEvents TxtFiltro As TextBox
     Friend WithEvents dgvProductos As DataGridView
     Friend WithEvents lblBuscarPro As Label
+    Friend WithEvents CmbCat As ComboBox
 End Class

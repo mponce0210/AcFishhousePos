@@ -1,7 +1,8 @@
 ﻿Imports System.Configuration
 Imports System.Data.SqlClient
-Imports System.Globalization
 Imports System.Drawing.Drawing2D
+Imports System.Globalization
+Imports AcFishhouse.FrmVerificadorPrecio
 Public Class VentasForm
     Private ReadOnly connStr As String =
                             ConfigurationManager.
@@ -87,8 +88,14 @@ Public Class VentasForm
 
     End Sub
 
-    Private Sub ToolStripLabel2_Click(sender As Object, e As EventArgs)
-
+    Private Sub ToolStripLabel2_Click(sender As Object, e As EventArgs) Handles TlSBtnVerifica.Click
+        Using f As New FrmVerificadorPrecio()
+            If f.ShowDialog(Me) = DialogResult.OK AndAlso f.ProductoSeleccionado IsNot Nothing Then
+                Dim dr As DataRow = f.ProductoSeleccionado
+                Dim cant As Decimal = f.CantidadSeleccionada
+                AgregarOIncrementarLinea(dr, cant) ' Tu método para meterlo al DataGridView1
+            End If
+        End Using
     End Sub
 
     Private Sub ToolStripLabel1_Click(sender As Object, e As EventArgs) Handles tsbF3Producto.Click
@@ -105,9 +112,15 @@ Public Class VentasForm
     End Sub
 
     Private Sub VentasForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+
         If e.KeyCode = Keys.F3 Then
             tsbF3Producto.PerformClick()
         End If
+
+        If e.KeyCode = Keys.F4 Then
+            TlSBtnVerifica.PerformClick()
+        End If
+
     End Sub
 
     Private Sub AgregarLineaDesdeModal(drv As DataRowView)
@@ -119,6 +132,7 @@ Public Class VentasForm
         dr.Cells("Cantidad").Value = 1D
         dr.Cells("ImporteVen").Value = drv("PRECIOPUB") * 1D
         dr.Cells("Existencia").Value = drv("EXISTENCIAS")
+
 
         'FormatearDtgVenta()
 
@@ -132,7 +146,6 @@ Public Class VentasForm
         '' 3) Aplica formato de moneda con dos decimales
         '.DefaultCellStyle.Format = "C2"
         'End With
-
         recalcularTotales(LblDTotal) ' Actualiza LblDTotal, LblGranTotal, etc.
     End Sub
 
@@ -173,7 +186,14 @@ Public Class VentasForm
                     .DefaultCellStyle.ForeColor = Color.Green
                     .DefaultCellStyle.Format = "C2"
                 End With
+
             End If
+            If .Columns.Contains("idproducto") Then
+                With .Columns("idproducto")
+                    .Visible = False
+                End With
+            End If
+
         End With
     End Sub
     Private Sub DataGridView1_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) _
@@ -268,13 +288,52 @@ Public Class VentasForm
         If Not ValidateSale() Then
             Return
         End If
-
         CalcularCambio()
-        GuardarVenta()
+
+        '1) Snapshot de intención de pago ANTES de guardar
+        Dim esEfectivo As Boolean = RbEfectivo.Checked
+        Dim esCredito As Boolean = RBCredito.Checked
+        Dim esDebito As Boolean = RBDebito.Checked
+        Dim esTransfer As Boolean = RBTransfer.Checked
+        Dim esMixto As Boolean = RBMixto.Checked
+        ' Montos de mixto (busca por varios nombres posibles)
+        Dim mixTC As Decimal = If(esMixto, ReadNudValue("NudTC", "MixTC", "NudTarjeta"), 0D)
+        Dim mixTD As Decimal = If(esMixto, ReadNudValue("NudTD", "MixTD", "NudDebito"), 0D)
+        Dim mixTR As Decimal = If(esMixto, ReadNudValue("NudTR", "MixTR", "NudTransfer"), 0D)
+        ' Total de la venta (para referencia; no lo usamos para decidir modales)
+        Dim totalVenta As Decimal = ParseCurrencySafe(LblDTotal.Text)
+
+        ' 2) Guardar la venta y obtener VentaId
+        Dim ventaId As Integer = 0
+        If Not GuardarVenta(ventaId) Then Exit Sub  ' si falla, no hay modal
+
+        ' 3) Abrir modal(es) de terminal según método
+        If esCredito Then
+            AbrirModalTerminal(ventaId, totalVenta, sugerida:="AFIRME")
+        End If
+
+        If esDebito Then
+            AbrirModalTerminal(ventaId, totalVenta, sugerida:="MERCADO PAGO")
+        End If
+
+        If esTransfer Then
+            AbrirModalTerminal(ventaId, totalVenta, sugerida:="TRANSFERENCIA BANCARIA")
+        End If
+
+        If esMixto Then
+            If mixTC > 0D Then AbrirModalTerminal(ventaId, mixTC, sugerida:="AFIRME")
+            If mixTD > 0D Then AbrirModalTerminal(ventaId, mixTD, sugerida:="MERCADO PAGO")
+            If mixTR > 0D Then AbrirModalTerminal(ventaId, mixTR, sugerida:="TRANSFERENCIA BANCARIA")
+        End If
+
+
+
+        IniciarNuevaVenta()
         FrmHistorialVentas.Show()
 
 
     End Sub
+
 
     Private Sub cboProducto_TextChanged(sender As Object, e As EventArgs) Handles cboProducto.TextChanged
         BtnEnter.Enabled = Not String.IsNullOrWhiteSpace(cboProducto.Text)
@@ -315,7 +374,7 @@ Public Class VentasForm
         ' 6.1) Buscamos el DataRow correspondiente
         Dim filas = dtProductos.Select(
             $"CODIGOBARRA = '{codigoSeleccionado.Replace("'", "''")}' 
-             OR DESCRIPCION LIKE '%{codigoSeleccionado.Replace("'", "''")}%'")
+             Or DESCRIPCION LIKE '%{codigoSeleccionado.Replace("'", "''")}%'")
         If filas.Length = 0 Then
             MessageBox.Show("Producto no encontrado.", "Aviso",
                             MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -344,14 +403,24 @@ Public Class VentasForm
         cboProducto.Focus()
     End Sub
 
-    Private Sub GuardarVenta()
+    Private Function GuardarVenta(ByRef ventaID As Integer) As Boolean
+        'ByRef total As Decimal,
+        'ByRef pagoTC As Decimal,
+        'ByRef pagoTD As Decimal,
+        'ByRef pagoTR As Decimal,
+        'ByRef metodo As String) As Boolean
         Dim total As Decimal = Decimal.Parse(LblDTotal.Text, Globalization.NumberStyles.Currency)
+        'total = Decimal.Parse(LblDTotal.Text, Globalization.NumberStyles.Currency)
         Dim usuario = Environment.UserName
-        Dim ventaID As Integer
+        ' Dim ventaID As Integer
         Dim folio As Integer
         Dim metodo As String
         Dim pagoEf, pagoTc, pagoTd, pagoTr, pagoTras, cambio As Decimal
-        Dim esMixto As Boolean
+        'Dim pagoEf As Decimal = 0D
+        'pagoTc = 0D : pagoTD = 0D : pagoTR = 0D
+        'Dim esMixto As Boolean 
+        Dim esMixto As Boolean = False
+
         ' … resto de recolección de datos …
 
         ' Determina el método y asigna montos
@@ -360,24 +429,27 @@ Public Class VentasForm
             pagoEf = total
         ElseIf RBCredito.Checked Then
             metodo = "TCREDITO"
-            pagoTc = total 'Decimal.Parse(txtPagoCon.Text)
+            pagoTC = total 'Decimal.Parse(txtPagoCon.Text)
         ElseIf RBDebito.Checked Then
             metodo = "TDEBITO"
-            pagoTd = total 'Decimal.Parse(txtPagoCon.Text)	
+            pagoTD = total 'Decimal.Parse(txtPagoCon.Text)	
         ElseIf RBTransfer.Checked Then
             metodo = "TRANSFER"
-            pagoTras = total 'Decimal.Parse(txtPagoCon.Text)		
+            'pagoTras = total 'Decimal.Parse(txtPagoCon.Text)		
+            pagoTR = total
         ElseIf RBMixto.Checked Then
             metodo = "MIXTO"
             esMixto = True
             pagoEf = NuDEfe.Value
-            pagoTc = NudTC.Value
+            pagoTC = NudTC.Value
+
             ' … otros métodos …
         End If
 
-
+        'Dim cambio As Decimal = 0D
         If esMixto = True Then
-            cambio = (pagoEf + pagoTc) - total
+            'cambio = (pagoEf + pagoTc) - total
+            cambio = (pagoEf + pagoTC + pagoTD + pagoTR) - total
         Else
             cambio = LblDCambio.Text
         End If
@@ -393,6 +465,7 @@ Public Class VentasForm
             ' 1) Inicia la transacción
             Using tr As SqlTransaction = cn.BeginTransaction()
                 Try
+                    ventaID = 0
                     ' 2.1) Inserta cabecera
                     Using cmdCab As New SqlCommand("dbo.sp_Ventas_InsertarCabecera", cn, tr)
                         cmdCab.CommandType = CommandType.StoredProcedure
@@ -402,7 +475,8 @@ Public Class VentasForm
                         cmdCab.Parameters.AddWithValue("@PagoEfectivo", pagoEf)
                         cmdCab.Parameters.AddWithValue("@PagoTCredito", pagoTc)
                         cmdCab.Parameters.AddWithValue("@PagoTDebito", pagoTd)
-                        cmdCab.Parameters.AddWithValue("@PagoTransfer", pagoTras)
+                        'cmdCab.Parameters.AddWithValue("@PagoTransfer", pagoTras)
+                        cmdCab.Parameters.AddWithValue("@PagoTransfer", pagoTr)
                         cmdCab.Parameters.AddWithValue("@PagoMixto", esMixto)
                         cmdCab.Parameters.AddWithValue("@Cambio", cambio)
 
@@ -439,7 +513,8 @@ Public Class VentasForm
                     tr.Commit()
                     MessageBox.Show($"Venta {folio} guardada.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    IniciarNuevaVenta()
+                    'IniciarNuevaVenta()
+                    Return True
                 Catch ex As Exception
                     ' 4) Si algo falló, deshace
                     tr.Rollback()
@@ -447,7 +522,7 @@ Public Class VentasForm
                 End Try
             End Using
         End Using
-    End Sub
+    End Function
 
     Private Sub IniciarNuevaVenta()
         ' Limpia grid, labels, pagos, y muestra el siguiente folio
@@ -567,6 +642,109 @@ Public Class VentasForm
 
 
         Return True
+    End Function
+
+    Private Sub DataGridView1_CellToolTipTextNeeded(sender As Object, e As DataGridViewCellToolTipTextNeededEventArgs) Handles DataGridView1.CellToolTipTextNeeded
+        ' Evitamos celdas de encabezado
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
+            Dim dgv As DataGridView = DirectCast(sender, DataGridView)
+
+            ' Tooltip para la columna Descripcion
+            If dgv.Columns(e.ColumnIndex).Name = "Descripcion Ptco" Then
+                e.ToolTipText = dgv.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString()
+            End If
+
+            ' Tooltip para la columna PRECIOPUB
+            If dgv.Columns(e.ColumnIndex).Name = "Cant." Then
+                Dim precio As Object = dgv.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+                e.ToolTipText = "Enter para Cambiar Cantidad" & precio.ToString()
+            End If
+        End If
+    End Sub
+
+    Private Sub AgregarOIncrementarLinea(dr As DataRow, cant As Decimal)
+        Dim idProd As Integer = Convert.ToInt32(dr!IdProducto)
+        Dim cod As String = CStr(dr!CodigoBarras)
+        Dim descp As String = CStr(dr!Descripcion)
+        Dim precio As Decimal = Convert.ToDecimal(dr!PrecioPub)
+        Dim exist As Decimal = Convert.ToDecimal(dr!Existencia)
+
+        ' Buscar si ya existe la línea en dtOrder
+        ' Dim filas() As DataRow = dtProductos.Select("IdProd = " & idProd)
+
+        ' Dim row As DataRow
+
+        ' If filas.Length = 0 Then
+        'Row = dtProductos.NewRow()
+        'Row("IdProd") = idProd
+        'Row("CodigoBarra") = cod
+        'Row("Descripcion") = descp
+        'Row("PrecioPub") = precio
+        'Row("Cantidad") = cant
+        'Row("Existenc") = exist
+        'Row("Importe") = precio * cant
+        ' dtProductos.Rows.Add(row)
+        'Else
+        'Row = filas(0)
+        'Row("Cantidad") = Convert.ToDecimal(row("Cantidad")) + cant
+        'Row("Importe") = Convert.ToDecimal(row("Cantidad")) * precio
+        'End If
+        Dim drVer = DataGridView1.Rows(DataGridView1.Rows.Add())
+        drVer.Cells("IdProducto").Value = idProd
+        drVer.Cells("CdBarras").Value = cod
+
+        drVer.Cells("DesProducto").Value = descp
+        drVer.Cells("PreVenta").Value = precio
+        drVer.Cells("Cantidad").Value = 1D
+        drVer.Cells("ImporteVen").Value = precio * 1D
+        drVer.Cells("Existencia").Value = exist
+
+
+
+        recalcularTotales(LblDTotal) ' tu función existente
+        DataGridView1.Refresh()
+    End Sub
+
+    Private Sub DataGridView1_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles DataGridView1.UserDeletedRow
+        recalcularTotales(LblDTotal)
+    End Sub
+
+    Private Sub AbrirModalTerminal(ventaId As Integer, monto As Decimal, Optional sugerida As String = Nothing)
+        Dim idSug As Integer? = Nothing
+        If Not String.IsNullOrWhiteSpace(sugerida) Then
+            Using cn As New SqlConnection(connStr),
+              cmd As New SqlCommand("
+                SELECT TOP 1 IdTerminal 
+                FROM dbo.CatTerminalesBancarias 
+                WHERE Activo=1 AND NombreTerminal = @n", cn)
+                cmd.Parameters.AddWithValue("@n", sugerida)
+                cn.Open()
+                Dim o = cmd.ExecuteScalar()
+                If o IsNot Nothing AndAlso o IsNot DBNull.Value Then idSug = CInt(o)
+            End Using
+        End If
+
+        Using f As New FrmPagoTerminal(ventaId, monto, idSug)  ' el modal ya soporta terminal sugerida
+            ' Using f As New FrmPagoTerminal(ventaId, monto)  ' el modal ya soporta terminal sugerida
+            f.ShowDialog(Me)
+        End Using
+    End Sub
+
+    Private Function ParseCurrencySafe(txt As String) As Decimal
+        Dim val As Decimal
+        Dim ci = Globalization.CultureInfo.CurrentCulture
+        Decimal.TryParse(txt, Globalization.NumberStyles.Currency, ci, val)
+        Return val
+    End Function
+
+    Private Function ReadNudValue(ParamArray names() As String) As Decimal
+        For Each n In names
+            Dim found = Me.Controls.Find(n, True)
+            If found IsNot Nothing AndAlso found.Length > 0 AndAlso TypeOf found(0) Is NumericUpDown Then
+                Return CType(found(0), NumericUpDown).Value
+            End If
+        Next
+        Return 0D
     End Function
 
 
