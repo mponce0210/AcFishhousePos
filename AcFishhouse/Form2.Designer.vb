@@ -89,6 +89,7 @@ Partial Class LoginForm
         'btnCancelar
         '
         Me.btnCancelar.BackColor = System.Drawing.Color.White
+        Me.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.White
         Me.btnCancelar.Location = New System.Drawing.Point(66, 232)
@@ -141,8 +142,10 @@ Partial Class LoginForm
         '
         'LoginForm
         '
+        Me.AcceptButton = Me.btnLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.btnCancelar
         Me.ClientSize = New System.Drawing.Size(416, 326)
         Me.Controls.Add(Me.Txtnom)
         Me.Controls.Add(Me.PictureBox1)

@@ -144,11 +144,15 @@ Public Class mainForm
     End Sub
 
     Private Function CargarAperturaAbiertaPorTerminal() As Boolean
+
+
         Dim dt As New DataTable()
         Using cn As New SqlConnection(connStr),
           cmd As New SqlCommand("dbo.sp_AperturaCaja_GetAbiertaPorTerminal", cn)
             cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.AddWithValue("@TerminalName", Environment.MachineName)
+            'cmd.Parameters.AddWithValue("@TerminalName", Environment.MachineName)
+            'Cambio temporal para pruebas en LAPAFH
+            cmd.Parameters.AddWithValue("@TerminalName", "LAPAFH")
             Using da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
             End Using

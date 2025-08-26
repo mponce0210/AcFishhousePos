@@ -595,6 +595,11 @@ Public Class FrmHistorialVentas
             doc.Add(Chunk.Newline)
             doc.Add(Chunk.Newline)
 
+            Dim GoogleOpinion As New Anchor("Tu Opinion es importante deja tu Reseña", fNorm) With {.Reference = "https://g.page/r/CSCBxzG2hvdzEBM/review"}
+            doc.Add(GoogleOpinion)
+            doc.Add(Chunk.Newline)
+            doc.Add(Chunk.Newline)
+
             Dim gracias As New Paragraph("**** Gracias por su compra. Síganos en redes para promociones ****", fBold)
             gracias.Alignment = Element.ALIGN_CENTER
             doc.Add(gracias)

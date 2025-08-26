@@ -40,13 +40,13 @@ Partial Class mainForm
         Me.tsbPrint = New System.Windows.Forms.ToolStripButton()
         Me.tsbExportExcel = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tssCaja = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssTerminal = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssObs = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssUltAct = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssAfirme = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssRiesgo = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.tssCaja = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -177,48 +177,11 @@ Partial Class mainForm
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tssCaja, Me.tssUsuario, Me.tssTerminal, Me.tssObs, Me.tssUltAct, Me.tssAfirme, Me.tssRiesgo})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 446)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 613)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(972, 25)
         Me.StatusStrip1.TabIndex = 6
         Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'tssUsuario
-        '
-        Me.tssUsuario.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.tssUsuario.Name = "tssUsuario"
-        Me.tssUsuario.Size = New System.Drawing.Size(119, 17)
-        Me.tssUsuario.Text = "ToolStripStatusLabel1"
-        '
-        'tssTerminal
-        '
-        Me.tssTerminal.Name = "tssTerminal"
-        Me.tssTerminal.Size = New System.Drawing.Size(119, 17)
-        Me.tssTerminal.Text = "ToolStripStatusLabel1"
-        '
-        'tssObs
-        '
-        Me.tssObs.Name = "tssObs"
-        Me.tssObs.Size = New System.Drawing.Size(119, 17)
-        Me.tssObs.Text = "ToolStripStatusLabel1"
-        '
-        'tssUltAct
-        '
-        Me.tssUltAct.Name = "tssUltAct"
-        Me.tssUltAct.Size = New System.Drawing.Size(119, 17)
-        Me.tssUltAct.Text = "ToolStripStatusLabel1"
-        '
-        'tssAfirme
-        '
-        Me.tssAfirme.Name = "tssAfirme"
-        Me.tssAfirme.Size = New System.Drawing.Size(119, 17)
-        Me.tssAfirme.Text = "ToolStripStatusLabel1"
-        '
-        'tssRiesgo
-        '
-        Me.tssRiesgo.Name = "tssRiesgo"
-        Me.tssRiesgo.Size = New System.Drawing.Size(119, 17)
-        Me.tssRiesgo.Text = "ToolStripStatusLabel1"
         '
         'tssCaja
         '
@@ -227,6 +190,43 @@ Partial Class mainForm
         Me.tssCaja.Size = New System.Drawing.Size(162, 20)
         Me.tssCaja.Text = "ToolStripStatusLabel1"
         '
+        'tssUsuario
+        '
+        Me.tssUsuario.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.tssUsuario.Name = "tssUsuario"
+        Me.tssUsuario.Size = New System.Drawing.Size(119, 20)
+        Me.tssUsuario.Text = "ToolStripStatusLabel1"
+        '
+        'tssTerminal
+        '
+        Me.tssTerminal.Name = "tssTerminal"
+        Me.tssTerminal.Size = New System.Drawing.Size(119, 20)
+        Me.tssTerminal.Text = "ToolStripStatusLabel1"
+        '
+        'tssObs
+        '
+        Me.tssObs.Name = "tssObs"
+        Me.tssObs.Size = New System.Drawing.Size(119, 20)
+        Me.tssObs.Text = "ToolStripStatusLabel1"
+        '
+        'tssUltAct
+        '
+        Me.tssUltAct.Name = "tssUltAct"
+        Me.tssUltAct.Size = New System.Drawing.Size(119, 20)
+        Me.tssUltAct.Text = "ToolStripStatusLabel1"
+        '
+        'tssAfirme
+        '
+        Me.tssAfirme.Name = "tssAfirme"
+        Me.tssAfirme.Size = New System.Drawing.Size(119, 20)
+        Me.tssAfirme.Text = "ToolStripStatusLabel1"
+        '
+        'tssRiesgo
+        '
+        Me.tssRiesgo.Name = "tssRiesgo"
+        Me.tssRiesgo.Size = New System.Drawing.Size(119, 20)
+        Me.tssRiesgo.Text = "ToolStripStatusLabel1"
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -234,7 +234,7 @@ Partial Class mainForm
         Me.BackColor = System.Drawing.SystemColors.Menu
         Me.BackgroundImage = Global.AcFishhouse.My.Resources.Resources.removebg2
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(972, 471)
+        Me.ClientSize = New System.Drawing.Size(972, 638)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
