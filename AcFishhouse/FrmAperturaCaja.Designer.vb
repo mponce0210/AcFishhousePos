@@ -94,6 +94,7 @@ Partial Class FrmAperturaCaja
         'BtnCancelar
         '
         Me.BtnCancelar.BackColor = System.Drawing.Color.LightGray
+        Me.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BtnCancelar.Location = New System.Drawing.Point(271, 270)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Size = New System.Drawing.Size(120, 31)
@@ -227,6 +228,7 @@ Partial Class FrmAperturaCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.BtnCancelar
         Me.ClientSize = New System.Drawing.Size(435, 418)
         Me.Controls.Add(Me.LblmontoGrande)
         Me.Controls.Add(Me.GrpDatos)

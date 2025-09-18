@@ -50,6 +50,7 @@ Partial Class VentasForm
         Me.BtnBorrar = New System.Windows.Forms.Button()
         Me.TxtPago = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.BtnHistorial = New System.Windows.Forms.Button()
         Me.NudTC = New System.Windows.Forms.NumericUpDown()
         Me.NuDEfe = New System.Windows.Forms.NumericUpDown()
@@ -165,7 +166,7 @@ Partial Class VentasForm
         Me.BtnEnter.Location = New System.Drawing.Point(707, 71)
         Me.BtnEnter.Name = "BtnEnter"
         Me.BtnEnter.Size = New System.Drawing.Size(205, 23)
-        Me.BtnEnter.TabIndex = 4
+        Me.BtnEnter.TabIndex = 1
         Me.BtnEnter.Text = "Enter-Agregar Producto"
         Me.BtnEnter.UseVisualStyleBackColor = True
         '
@@ -177,6 +178,7 @@ Partial Class VentasForm
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(689, 244)
         Me.DataGridView1.TabIndex = 5
+        Me.DataGridView1.TabStop = False
         '
         'IdProducto
         '
@@ -246,11 +248,11 @@ Partial Class VentasForm
         'LblTotal
         '
         Me.LblTotal.AutoSize = True
-        Me.LblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotal.Font = New System.Drawing.Font("Segoe UI Black", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTotal.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.LblTotal.Location = New System.Drawing.Point(779, 205)
+        Me.LblTotal.Location = New System.Drawing.Point(772, 229)
         Me.LblTotal.Name = "LblTotal"
-        Me.LblTotal.Size = New System.Drawing.Size(61, 15)
+        Me.LblTotal.Size = New System.Drawing.Size(72, 20)
         Me.LblTotal.TabIndex = 8
         Me.LblTotal.Text = "TOTAL : "
         '
@@ -280,7 +282,7 @@ Partial Class VentasForm
         '
         Me.LblDTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblDTotal.ForeColor = System.Drawing.Color.DarkGreen
-        Me.LblDTotal.Location = New System.Drawing.Point(697, 220)
+        Me.LblDTotal.Location = New System.Drawing.Point(683, 244)
         Me.LblDTotal.Name = "LblDTotal"
         Me.LblDTotal.Size = New System.Drawing.Size(259, 85)
         Me.LblDTotal.TabIndex = 11
@@ -315,7 +317,7 @@ Partial Class VentasForm
         Me.BtnBorrar.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.BtnBorrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnBorrar.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.BtnBorrar.Location = New System.Drawing.Point(707, 317)
+        Me.BtnBorrar.Location = New System.Drawing.Point(502, 16)
         Me.BtnBorrar.Name = "BtnBorrar"
         Me.BtnBorrar.Size = New System.Drawing.Size(205, 28)
         Me.BtnBorrar.TabIndex = 15
@@ -336,9 +338,11 @@ Partial Class VentasForm
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.White
+        Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.BtnHistorial)
         Me.GroupBox1.Controls.Add(Me.NudTC)
         Me.GroupBox1.Controls.Add(Me.NuDEfe)
+        Me.GroupBox1.Controls.Add(Me.BtnBorrar)
         Me.GroupBox1.Controls.Add(Me.LblMixTc)
         Me.GroupBox1.Controls.Add(Me.lblMixEfe)
         Me.GroupBox1.Controls.Add(Me.PictureBox5)
@@ -366,12 +370,24 @@ Partial Class VentasForm
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Resumen Ventas "
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.SystemColors.InactiveCaption
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.Button1.Location = New System.Drawing.Point(283, 16)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(205, 28)
+        Me.Button1.TabIndex = 35
+        Me.Button1.Text = "Mod. Cantidad. Art"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'BtnHistorial
         '
         Me.BtnHistorial.Location = New System.Drawing.Point(713, 14)
         Me.BtnHistorial.Name = "BtnHistorial"
         Me.BtnHistorial.Size = New System.Drawing.Size(199, 30)
-        Me.BtnHistorial.TabIndex = 34
+        Me.BtnHistorial.TabIndex = 8
         Me.BtnHistorial.Text = "Historial de Tickets"
         Me.BtnHistorial.UseVisualStyleBackColor = True
         '
@@ -439,7 +455,7 @@ Partial Class VentasForm
         Me.RBTransfer.Location = New System.Drawing.Point(377, 134)
         Me.RBTransfer.Name = "RBTransfer"
         Me.RBTransfer.Size = New System.Drawing.Size(100, 31)
-        Me.RBTransfer.TabIndex = 28
+        Me.RBTransfer.TabIndex = 5
         Me.RBTransfer.TabStop = True
         Me.RBTransfer.Text = "TRANSFER"
         Me.RBTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -468,7 +484,7 @@ Partial Class VentasForm
         Me.RBMixto.Location = New System.Drawing.Point(497, 134)
         Me.RBMixto.Name = "RBMixto"
         Me.RBMixto.Size = New System.Drawing.Size(68, 31)
-        Me.RBMixto.TabIndex = 26
+        Me.RBMixto.TabIndex = 6
         Me.RBMixto.TabStop = True
         Me.RBMixto.Text = "MIXTO"
         Me.RBMixto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -488,7 +504,7 @@ Partial Class VentasForm
         Me.RBDebito.Location = New System.Drawing.Point(274, 134)
         Me.RBDebito.Name = "RBDebito"
         Me.RBDebito.Size = New System.Drawing.Size(85, 31)
-        Me.RBDebito.TabIndex = 24
+        Me.RBDebito.TabIndex = 5
         Me.RBDebito.TabStop = True
         Me.RBDebito.Text = "T.DEBITO"
         Me.RBDebito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -538,7 +554,7 @@ Partial Class VentasForm
         Me.RBCredito.Location = New System.Drawing.Point(170, 134)
         Me.RBCredito.Name = "RBCredito"
         Me.RBCredito.Size = New System.Drawing.Size(95, 31)
-        Me.RBCredito.TabIndex = 20
+        Me.RBCredito.TabIndex = 4
         Me.RBCredito.TabStop = True
         Me.RBCredito.Text = "T.CREDITO"
         Me.RBCredito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -557,7 +573,7 @@ Partial Class VentasForm
         Me.RbEfectivo.Location = New System.Drawing.Point(68, 134)
         Me.RbEfectivo.Name = "RbEfectivo"
         Me.RbEfectivo.Size = New System.Drawing.Size(88, 31)
-        Me.RbEfectivo.TabIndex = 21
+        Me.RbEfectivo.TabIndex = 3
         Me.RbEfectivo.TabStop = True
         Me.RbEfectivo.Text = "EFECTIVO"
         Me.RbEfectivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -573,7 +589,7 @@ Partial Class VentasForm
         Me.cboProducto.MaxDropDownItems = 15
         Me.cboProducto.Name = "cboProducto"
         Me.cboProducto.Size = New System.Drawing.Size(523, 21)
-        Me.cboProducto.TabIndex = 19
+        Me.cboProducto.TabIndex = 0
         '
         'Label1
         '
@@ -595,7 +611,6 @@ Partial Class VentasForm
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cboProducto)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.BtnBorrar)
         Me.Controls.Add(Me.BtnCobro)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.LblTotal)
@@ -670,4 +685,5 @@ Partial Class VentasForm
     Friend WithEvents TlSBtnVerifica As ToolStripButton
     Friend WithEvents ToolStripLabel1 As ToolStripLabel
     Friend WithEvents ToolStripLabel2 As ToolStripLabel
+    Friend WithEvents Button1 As Button
 End Class

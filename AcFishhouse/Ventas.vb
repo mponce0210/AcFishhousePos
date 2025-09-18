@@ -747,5 +747,20 @@ Public Class VentasForm
         Return 0D
     End Function
 
+    Private Sub cboProducto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboProducto.SelectedIndexChanged
 
+    End Sub
+
+    Private Sub BtnBorrar_Click(sender As Object, e As EventArgs) Handles BtnBorrar.Click
+
+        MessageBox.Show("Seleccione con Click el Numero de Renglon, al marcarse el Renglon completo, pulse Delete o Supr",
+                       "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        MessageBox.Show("Seleccione Columna de Cantidad , haga la Modificacion y luego Enter",
+                       "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+    End Sub
 End Class

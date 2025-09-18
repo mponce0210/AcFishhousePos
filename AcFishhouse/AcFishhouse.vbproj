@@ -29,7 +29,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\FHSERVER\Deploy\FishHousePos\</UpdateUrl>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -110,6 +110,18 @@
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.3485.44, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3485.44\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.3485.44, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3485.44\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.3485.44, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3485.44\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="RBush, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c77e27b81f4d0187, processorArchitecture=MSIL">
       <HintPath>..\packages\RBush.Signed.4.0.0\lib\net47\RBush.dll</HintPath>
     </Reference>
@@ -159,6 +171,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox.Designer.vb">
+      <DependentUpon>AboutBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AperturaCajaContext.vb" />
     <Compile Include="Biotropic.Designer.vb">
       <DependentUpon>Biotropic.vb</DependentUpon>
@@ -177,6 +195,9 @@
       <DependentUpon>Form2.vb</DependentUpon>
     </Compile>
     <Compile Include="Form2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExportable.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAperturaCaja.Designer.vb">
@@ -215,6 +236,18 @@
     <Compile Include="FrmPagoTerminal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmPizarron.Designer.vb">
+      <DependentUpon>FrmPizarron.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPizarron.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRepVentasProd.Designer.vb">
+      <DependentUpon>FrmRepVentasProd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRepVentasProd.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmVerificadorPrecio.Designer.vb">
       <DependentUpon>FrmVerificadorPrecio.vb</DependentUpon>
     </Compile>
@@ -225,6 +258,12 @@
       <DependentUpon>FrmWhatsapp.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmWhatsapp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarcasForm.Designer.vb">
+      <DependentUpon>MarcasForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MarcasForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
@@ -258,6 +297,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Biotropic.resx">
       <DependentUpon>Biotropic.vb</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExportable.resx">
+      <DependentUpon>FormExportable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAperturaCaja.resx">
       <DependentUpon>FrmAperturaCaja.vb</DependentUpon>
@@ -285,11 +330,20 @@
     <EmbeddedResource Include="FrmPagoTerminal.resx">
       <DependentUpon>FrmPagoTerminal.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPizarron.resx">
+      <DependentUpon>FrmPizarron.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRepVentasProd.resx">
+      <DependentUpon>FrmRepVentasProd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmVerificadorPrecio.resx">
       <DependentUpon>FrmVerificadorPrecio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWhatsapp.resx">
       <DependentUpon>FrmWhatsapp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarcasForm.resx">
+      <DependentUpon>MarcasForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas.resx">
       <DependentUpon>Ventas.vb</DependentUpon>
@@ -433,6 +487,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
     <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
   <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets')" />
 </Project>

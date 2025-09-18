@@ -5,6 +5,7 @@ Imports System.Globalization
 Imports System
 Imports System.Windows.Forms
 
+
 Public Class InventarioForm
     Private connStr As String = ConfigurationManager.
         ConnectionStrings("MiConexion").ConnectionString
@@ -263,7 +264,7 @@ Public Class InventarioForm
 
     Private Sub CargarMarcas()
         Dim dt As New DataTable()
-        Dim sql = "SELECT IdMarca, Nombre FROM dbo.Marcas ORDER BY Nombre"
+        Dim sql = "SELECT IdMarca, Nombre FROM dbo.Marcas ORDER BY COALESCE(Orden, 2147483647),Nombre"
         Using cn As New SqlConnection(connStr),
               da As New SqlDataAdapter(sql, cn)
             da.Fill(dt)
@@ -281,7 +282,7 @@ Public Class InventarioForm
     End Sub
     Private Sub CargarMarcasEdit()
         Dim dt As New DataTable()
-        Dim sql = "SELECT IdMarca, Nombre FROM dbo.Marcas ORDER BY Nombre"
+        Dim sql = "SELECT IdMarca, Nombre FROM dbo.Marcas ORDER BY COALESCE(Orden, 2147483647),Nombre"
         Using cn As New SqlConnection(connStr),
               da As New SqlDataAdapter(sql, cn)
             da.Fill(dt)
@@ -584,7 +585,8 @@ Public Class InventarioForm
         End If
     End Sub
 
-    Private Sub gbEdicion_Enter(sender As Object, e As EventArgs) Handles gbEdicion.Enter
 
-    End Sub
+
+
+
 End Class

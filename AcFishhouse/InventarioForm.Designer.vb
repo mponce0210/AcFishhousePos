@@ -293,6 +293,7 @@ Partial Class InventarioForm
         '
         'BtnExportarPdf
         '
+        Me.BtnExportarPdf.Enabled = False
         Me.BtnExportarPdf.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnExportarPdf.Location = New System.Drawing.Point(1185, 61)
         Me.BtnExportarPdf.Name = "BtnExportarPdf"
@@ -337,7 +338,8 @@ Partial Class InventarioForm
         '
         'btnImportarExcel
         '
-        Me.btnImportarExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImportarExcel.Font = New System.Drawing.Font("Segoe UI Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImportarExcel.ForeColor = System.Drawing.SystemColors.Highlight
         Me.btnImportarExcel.Location = New System.Drawing.Point(1089, 61)
         Me.btnImportarExcel.Name = "btnImportarExcel"
         Me.btnImportarExcel.Size = New System.Drawing.Size(90, 31)

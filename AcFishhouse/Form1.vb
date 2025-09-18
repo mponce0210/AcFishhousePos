@@ -50,8 +50,23 @@ Public Class mainForm
             child.ExportGridToExcel(child.OrderGrid)
         Else
             MessageBox.Show("No hay ninguna ventana de Biotropic activa.", "Atención",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+
+        'Dim act = Me.ActiveMdiChild
+        'If act Is Nothing Then
+        'MessageBox.Show("No hay ninguna ventana activa.", "Exportar a Excel",
+        'MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'Return
+        'End If
+
+        'If TypeOf act Is FormExportable Then
+        'DirectCast(act, FormExportable).ExportarAExcel()
+        'Else
+        'MessageBox.Show("La ventana activa no soporta exportar a Excel.", "Exportar a Excel",
+        'MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'End If
+
     End Sub
 
     Private Sub PToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PToolStripMenuItem.Click
@@ -243,5 +258,37 @@ Public Class mainForm
         End If
     End Sub
 
+    Private Sub IMPORTARXLSBIOTROPICToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IMPORTARXLSBIOTROPICToolStripMenuItem.Click
+        Dim frmImp As New FrmImportarProveedor()
+        frmImp.MdiParent = Me
+        'frm.WindowState = FormWindowState.Maximized    ' Opcional: maximiza el hijo
+        frmImp.Show()
 
+    End Sub
+
+    Private Sub VERSIONPOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VERSIONPOSToolStripMenuItem.Click
+        Dim f As New AboutBox()
+        f.ShowDialog()
+
+    End Sub
+
+    Private Sub REPPRODVENDIDOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles REPPRODVENDIDOSToolStripMenuItem.Click
+        Dim f As New FrmProductosVendidos()
+        f.MdiParent = Me
+        f.Show()
+    End Sub
+
+    Private Sub MARCASToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MARCASToolStripMenuItem.Click
+        Dim f As New MarcasForm()
+        f.MdiParent = Me
+        '     f.WindowState = FormWindowState.Maximized   ' opcional
+        f.Show()
+    End Sub
+
+    Private Sub PIZARRONFISHHOUSEToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PIZARRONFISHHOUSEToolStripMenuItem.Click
+        Dim piza As New FrmPizarron()
+        piza.MdiParent = Me
+        piza.Show()
+
+    End Sub
 End Class

@@ -24,17 +24,24 @@ Partial Class mainForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainForm))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.CATALOGOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MARCASToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.INVENTARIOFISHHOUSEToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BIOTROPICToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VENTANASToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.IMPRESIONESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TICKETToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.IMPORTARXLSBIOTROPICToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CORTESCAJAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.APERTURACAJAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DINEROENCAJAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VENTANASToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.REPORTESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.REPPRODVENDIDOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.IMPRESIONESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TICKETToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ACERCADEToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VERSIONPOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsbExit = New System.Windows.Forms.ToolStripButton()
         Me.tsbPrint = New System.Windows.Forms.ToolStripButton()
@@ -47,6 +54,7 @@ Partial Class mainForm
         Me.tssUltAct = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssAfirme = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssRiesgo = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.PIZARRONFISHHOUSEToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -54,13 +62,26 @@ Partial Class mainForm
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.VENTANASToolStripMenuItem, Me.IMPRESIONESToolStripMenuItem, Me.CORTESCAJAToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CATALOGOSToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.CORTESCAJAToolStripMenuItem, Me.VENTANASToolStripMenuItem, Me.REPORTESToolStripMenuItem, Me.IMPRESIONESToolStripMenuItem, Me.ACERCADEToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.MdiWindowListItem = Me.VENTANASToolStripMenuItem
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(972, 24)
         Me.MenuStrip1.TabIndex = 2
         Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'CATALOGOSToolStripMenuItem
+        '
+        Me.CATALOGOSToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MARCASToolStripMenuItem})
+        Me.CATALOGOSToolStripMenuItem.Name = "CATALOGOSToolStripMenuItem"
+        Me.CATALOGOSToolStripMenuItem.Size = New System.Drawing.Size(85, 20)
+        Me.CATALOGOSToolStripMenuItem.Text = "CATALOGOS"
+        '
+        'MARCASToolStripMenuItem
+        '
+        Me.MARCASToolStripMenuItem.Name = "MARCASToolStripMenuItem"
+        Me.MARCASToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.MARCASToolStripMenuItem.Text = "MARCAS"
         '
         'VentasToolStripMenuItem
         '
@@ -77,7 +98,7 @@ Partial Class mainForm
         '
         'InventarioToolStripMenuItem
         '
-        Me.InventarioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.INVENTARIOFISHHOUSEToolStripMenuItem, Me.BIOTROPICToolStripMenuItem})
+        Me.InventarioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.INVENTARIOFISHHOUSEToolStripMenuItem, Me.BIOTROPICToolStripMenuItem, Me.IMPORTARXLSBIOTROPICToolStripMenuItem})
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
         Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(85, 20)
         Me.InventarioToolStripMenuItem.Text = "INVENTARIO"
@@ -85,33 +106,20 @@ Partial Class mainForm
         'INVENTARIOFISHHOUSEToolStripMenuItem
         '
         Me.INVENTARIOFISHHOUSEToolStripMenuItem.Name = "INVENTARIOFISHHOUSEToolStripMenuItem"
-        Me.INVENTARIOFISHHOUSEToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.INVENTARIOFISHHOUSEToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.INVENTARIOFISHHOUSEToolStripMenuItem.Text = "INVENTARIO FISH HOUSE"
         '
         'BIOTROPICToolStripMenuItem
         '
         Me.BIOTROPICToolStripMenuItem.Name = "BIOTROPICToolStripMenuItem"
-        Me.BIOTROPICToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.BIOTROPICToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.BIOTROPICToolStripMenuItem.Text = "BIOTROPIC"
         '
-        'VENTANASToolStripMenuItem
+        'IMPORTARXLSBIOTROPICToolStripMenuItem
         '
-        Me.VENTANASToolStripMenuItem.Name = "VENTANASToolStripMenuItem"
-        Me.VENTANASToolStripMenuItem.Size = New System.Drawing.Size(77, 20)
-        Me.VENTANASToolStripMenuItem.Text = "VENTANAS"
-        '
-        'IMPRESIONESToolStripMenuItem
-        '
-        Me.IMPRESIONESToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TICKETToolStripMenuItem})
-        Me.IMPRESIONESToolStripMenuItem.Name = "IMPRESIONESToolStripMenuItem"
-        Me.IMPRESIONESToolStripMenuItem.Size = New System.Drawing.Size(92, 20)
-        Me.IMPRESIONESToolStripMenuItem.Text = "IMPRESIONES"
-        '
-        'TICKETToolStripMenuItem
-        '
-        Me.TICKETToolStripMenuItem.Name = "TICKETToolStripMenuItem"
-        Me.TICKETToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
-        Me.TICKETToolStripMenuItem.Text = "TICKET"
+        Me.IMPORTARXLSBIOTROPICToolStripMenuItem.Name = "IMPORTARXLSBIOTROPICToolStripMenuItem"
+        Me.IMPORTARXLSBIOTROPICToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.IMPORTARXLSBIOTROPICToolStripMenuItem.Text = "IMPORTAR XLS BIOTROPIC"
         '
         'CORTESCAJAToolStripMenuItem
         '
@@ -131,6 +139,51 @@ Partial Class mainForm
         Me.DINEROENCAJAToolStripMenuItem.Name = "DINEROENCAJAToolStripMenuItem"
         Me.DINEROENCAJAToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.DINEROENCAJAToolStripMenuItem.Text = "DINERO EN CAJA"
+        '
+        'VENTANASToolStripMenuItem
+        '
+        Me.VENTANASToolStripMenuItem.Name = "VENTANASToolStripMenuItem"
+        Me.VENTANASToolStripMenuItem.Size = New System.Drawing.Size(77, 20)
+        Me.VENTANASToolStripMenuItem.Text = "VENTANAS"
+        '
+        'REPORTESToolStripMenuItem
+        '
+        Me.REPORTESToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.REPPRODVENDIDOSToolStripMenuItem, Me.PIZARRONFISHHOUSEToolStripMenuItem})
+        Me.REPORTESToolStripMenuItem.Name = "REPORTESToolStripMenuItem"
+        Me.REPORTESToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
+        Me.REPORTESToolStripMenuItem.Text = "REPORTES"
+        '
+        'REPPRODVENDIDOSToolStripMenuItem
+        '
+        Me.REPPRODVENDIDOSToolStripMenuItem.Name = "REPPRODVENDIDOSToolStripMenuItem"
+        Me.REPPRODVENDIDOSToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
+        Me.REPPRODVENDIDOSToolStripMenuItem.Text = "REP. PROD. VENDIDOS"
+        '
+        'IMPRESIONESToolStripMenuItem
+        '
+        Me.IMPRESIONESToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TICKETToolStripMenuItem})
+        Me.IMPRESIONESToolStripMenuItem.Name = "IMPRESIONESToolStripMenuItem"
+        Me.IMPRESIONESToolStripMenuItem.Size = New System.Drawing.Size(92, 20)
+        Me.IMPRESIONESToolStripMenuItem.Text = "IMPRESIONES"
+        '
+        'TICKETToolStripMenuItem
+        '
+        Me.TICKETToolStripMenuItem.Name = "TICKETToolStripMenuItem"
+        Me.TICKETToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
+        Me.TICKETToolStripMenuItem.Text = "TICKET"
+        '
+        'ACERCADEToolStripMenuItem
+        '
+        Me.ACERCADEToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VERSIONPOSToolStripMenuItem})
+        Me.ACERCADEToolStripMenuItem.Name = "ACERCADEToolStripMenuItem"
+        Me.ACERCADEToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
+        Me.ACERCADEToolStripMenuItem.Text = "ACERCA DE .."
+        '
+        'VERSIONPOSToolStripMenuItem
+        '
+        Me.VERSIONPOSToolStripMenuItem.Name = "VERSIONPOSToolStripMenuItem"
+        Me.VERSIONPOSToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.VERSIONPOSToolStripMenuItem.Text = "VERSION POS"
         '
         'ToolStrip1
         '
@@ -227,6 +280,12 @@ Partial Class mainForm
         Me.tssRiesgo.Size = New System.Drawing.Size(119, 20)
         Me.tssRiesgo.Text = "ToolStripStatusLabel1"
         '
+        'PIZARRONFISHHOUSEToolStripMenuItem
+        '
+        Me.PIZARRONFISHHOUSEToolStripMenuItem.Name = "PIZARRONFISHHOUSEToolStripMenuItem"
+        Me.PIZARRONFISHHOUSEToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
+        Me.PIZARRONFISHHOUSEToolStripMenuItem.Text = "PIZARRON FISH HOUSE"
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -279,4 +338,12 @@ Partial Class mainForm
     Friend WithEvents tssUltAct As ToolStripStatusLabel
     Friend WithEvents tssAfirme As ToolStripStatusLabel
     Friend WithEvents tssRiesgo As ToolStripStatusLabel
+    Friend WithEvents IMPORTARXLSBIOTROPICToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ACERCADEToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VERSIONPOSToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents REPORTESToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents REPPRODVENDIDOSToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CATALOGOSToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MARCASToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PIZARRONFISHHOUSEToolStripMenuItem As ToolStripMenuItem
 End Class
