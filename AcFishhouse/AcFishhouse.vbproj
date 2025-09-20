@@ -29,7 +29,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\FHSERVER\Deploy\FishHousePos\</UpdateUrl>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -230,6 +230,12 @@
     <Compile Include="FrmImportarProveedor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmInstalacionModal.Designer.vb">
+      <DependentUpon>FrmInstalacionModal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInstalacionModal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmPagoTerminal.Designer.vb">
       <DependentUpon>FrmPagoTerminal.vb</DependentUpon>
     </Compile>
@@ -240,6 +246,12 @@
       <DependentUpon>FrmPizarron.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmPizarron.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRecetaModal.Designer.vb">
+      <DependentUpon>FrmRecetaModal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRecetaModal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmRepVentasProd.Designer.vb">
@@ -327,11 +339,17 @@
     <EmbeddedResource Include="FrmImportarProveedor.resx">
       <DependentUpon>FrmImportarProveedor.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmInstalacionModal.resx">
+      <DependentUpon>FrmInstalacionModal.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPagoTerminal.resx">
       <DependentUpon>FrmPagoTerminal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPizarron.resx">
       <DependentUpon>FrmPizarron.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRecetaModal.resx">
+      <DependentUpon>FrmRecetaModal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRepVentasProd.resx">
       <DependentUpon>FrmRepVentasProd.vb</DependentUpon>

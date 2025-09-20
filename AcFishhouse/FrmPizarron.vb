@@ -12,6 +12,7 @@ Public Class FrmPizarron
     '--- Campos de la forma
     Private currentNoteId As Integer? = Nothing    ' NoteID actual
     Private tvMode As Boolean = False
+    Private editingCatId As Integer? = Nothing
 
 
     Private Sub FrmPizarron_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -35,7 +36,9 @@ Public Class FrmPizarron
 
         InitCards() ' prepara WebView2
         CargarLista(SelectedCatId:=Nothing)
+
         tvRubros.HideSelection = False
+        tvRubros.CollapseAll()
     End Sub
     Private Sub CargarCboTipo()
         Dim dt As New DataTable()
@@ -353,6 +356,7 @@ Public Class FrmPizarron
         If dtHasta.ShowCheckBox Then dtHasta.Checked = False
         txttitulo.Focus()
         txtNoteId.Clear()
+
     End Sub
     Private Function GetEstadoActual() As Integer
         Dim drv = TryCast(bs.Current, DataRowView)
@@ -419,6 +423,10 @@ Public Class FrmPizarron
     End Sub
 
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
+        If tvRubros.SelectedNode Is Nothing Then
+            MessageBox.Show("Selecciona un rubro en el árbol.", "Pizarrón") : Exit Sub
+        End If
+        editingCatId = CInt(tvRubros.SelectedNode.Tag)
         LimpiarDetalle()
     End Sub
 
@@ -450,6 +458,50 @@ Public Class FrmPizarron
         CargarDetalle(currentNoteId.Value)
     End Sub
 
+    Private Sub btnRecetas_Click(sender As Object, e As EventArgs) Handles btnRecetas.Click
+        ' Usa el rubro de edición actual (o el seleccionado del árbol)
+        Dim catId As Integer? = If(editingCatId, If(tvRubros.SelectedNode Is Nothing, Nothing, CInt(tvRubros.SelectedNode.Tag)))
+        txtNoteId.Clear()
 
+        If Not catId.HasValue Then
+            MessageBox.Show("Selecciona un rubro en el árbol para asociar la receta.", "Pizarrón")
+            Exit Sub
+        End If
 
+        ' Si hay una nota seleccionada y es Receta, pásala para editar
+        Dim noteId As Integer? = Nothing
+        Dim drv = TryCast(bs.Current, DataRowView)
+        If drv IsNot Nothing AndAlso Not drv.Row.IsNull("NoteID") AndAlso Not drv.Row.IsNull("Tipo") Then
+            If CInt(drv("Tipo")) = 1 Then noteId = CInt(drv("NoteID")) ' 1 = Receta
+        End If
+
+        Using f As New FrmRecetaModal(connStr, catId.Value, noteId)
+            If f.ShowDialog(Me) = DialogResult.OK Then
+                ' Refresca lista por si guardó/actualizó
+                CargarLista(catId.Value)
+            End If
+        End Using
+    End Sub
+
+    Private Sub btnInstalaciones_Click(sender As Object, e As EventArgs) Handles btnInstalaciones.Click
+        ' Rubro para asociar la guía
+        Dim catId As Integer? = If(editingCatId, If(tvRubros.SelectedNode Is Nothing, Nothing, CInt(tvRubros.SelectedNode.Tag)))
+        If Not catId.HasValue Then
+            MessageBox.Show("Selecciona un rubro en el árbol para asociar la guía.", "Pizarrón")
+            Exit Sub
+        End If
+
+        ' Si hay nota seleccionada y es Instalación (Tipo=5), pásala para editar
+        Dim noteId As Integer? = Nothing
+        Dim drv = TryCast(bs.Current, DataRowView)
+        If drv IsNot Nothing AndAlso Not drv.Row.IsNull("NoteID") AndAlso Not drv.Row.IsNull("Tipo") Then
+            If CInt(drv("Tipo")) = 5 Then noteId = CInt(drv("NoteID"))
+        End If
+
+        Using f As New FrmInstalacionModal(connStr, catId.Value, noteId)
+            If f.ShowDialog(Me) = DialogResult.OK Then
+                CargarLista(catId.Value)
+            End If
+        End Using
+    End Sub
 End Class

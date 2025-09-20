@@ -46,8 +46,8 @@ Partial Class FrmDineroenCaja
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LblDebito = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.lblCredito = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.LblTran = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -320,17 +320,6 @@ Partial Class FrmDineroenCaja
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "TARJETAS"
         '
-        'Label4
-        '
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.Label4.Location = New System.Drawing.Point(144, 13)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(130, 29)
-        Me.Label4.TabIndex = 23
-        Me.Label4.Text = "$ T.Credito"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'lblCredito
         '
         Me.lblCredito.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -341,6 +330,17 @@ Partial Class FrmDineroenCaja
         Me.lblCredito.TabIndex = 24
         Me.lblCredito.Text = "Debito"
         Me.lblCredito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label4
+        '
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.Label4.Location = New System.Drawing.Point(144, 13)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(130, 29)
+        Me.Label4.TabIndex = 23
+        Me.Label4.Text = "$ T.Credito"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label5
         '
@@ -381,7 +381,7 @@ Partial Class FrmDineroenCaja
         Me.lbltotalVenta.ForeColor = System.Drawing.Color.Blue
         Me.lbltotalVenta.Location = New System.Drawing.Point(338, 445)
         Me.lbltotalVenta.Name = "lbltotalVenta"
-        Me.lbltotalVenta.Size = New System.Drawing.Size(168, 40)
+        Me.lbltotalVenta.Size = New System.Drawing.Size(243, 40)
         Me.lbltotalVenta.TabIndex = 27
         Me.lbltotalVenta.Text = "$total"
         Me.lbltotalVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
